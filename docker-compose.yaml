@@ -15,6 +15,7 @@ services:
       - SETGID
       - SETUID
       - DAC_OVERRIDE
+    restart: unless-stopped
 
   searxng:
     container_name: searxng
@@ -40,6 +41,7 @@ services:
       options:
         max-size: "1m"
         max-file: "1"
+    restart: unless-stopped
 
 networks:
   searxng:
