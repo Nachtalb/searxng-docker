@@ -1,5 +1,8 @@
 # searxng-docker
 
+ℹ Adjusted to use for [my own instance](https://search.nachtalb.io/). Forked
+from [searxng/searxng-docker](https://github.com/searxng/searxng-docker) ℹ
+
 Create a new SearXNG  instance in five minutes using Docker
 
 ## What is included ?
