@@ -26,7 +26,8 @@ services:
     # ports:
     #  - "8080:8080"
     volumes:
-      - ./searxng:/etc/searxng:rw
+      - "$PWD/searxng/searxng:/etc/searxng:rw"
+      # - "$PWD/searxng/uwsgi.ini":/etc/searxng/uwsgi.ini:ro
     environment:
       - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
     cap_drop:
@@ -42,6 +43,8 @@ services:
         max-size: "1m"
         max-file: "1"
     restart: unless-stopped
+    depends_on:
+      - searxng_redis
 
 networks:
   searxng:

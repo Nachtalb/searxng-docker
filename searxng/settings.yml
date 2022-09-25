@@ -1,5 +1,8 @@
 # see https://docs.searxng.org/admin/engines/settings.html#use-default-settings
 use_default_settings: true
+general:
+  donation_url: false
+  enable_metrics: false
 server:
   # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
   secret_key: "shietomgsomuchwow"
@@ -10,7 +13,21 @@ ui:
   query_in_title: true
   infinite_scroll: true
   center_alignment: true
+  results_on_new_tab: true
 redis:
   url: redis://searxng_redis:6379/0
 search:
   autocomplete: duckduckgo
+  autocomplete_min: 3
+enabled_plugins:
+  - 'Hash plugin'
+  - 'Search on category select'
+  - 'Self Informations'
+  - 'Tracker URL remover'
+  - 'Hostname replace'  # see hostname_replace configuration below
+  - 'Vim-like hotkeys'
+
+hostname_replace:
+  '(.*\.)?reddit\.com$': 'libreddit.nachtalb.io'
+  '(.*\.)?redd\.it$': 'libreddit.nachtalb.io'
+  '(www\.)?twitter\.com$': 'nitter.nachtalb.io'
